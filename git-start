@@ -1,0 +1,10 @@
+#!/bin/bash
+# Assumes ssh, git clones a repo from github
+REPO=$1
+shift
+if [[ $REPO == *"/"* ]]
+then
+  git clone git@github.com:"$REPO" "$@"
+fi
+  # Assume my github
+  git clone git@github.com:ajay-gandhi/"$REPO" "$@"
