@@ -5,6 +5,7 @@ shift
 if [[ $REPO == *"/"* ]]
 then
   git clone git@github.com:"$REPO" "$@"
-fi
+else
   # Assume my github
   git clone git@github.com:ajay-gandhi/"$REPO" "$@"
+fi
