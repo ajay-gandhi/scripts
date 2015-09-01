@@ -1,9 +1,0 @@
-#!/bin/bash
-FULL_FILENAME=$(basename "$1")
-FILENAME="${FULL_FILENAME%.*}"
-if [[ "$2" = "-n" ]]
-then
-  pandoc --number-sections "$1" -o "$FILENAME".pdf && open "$FILENAME".pdf
-else
-  pandoc "$1" -o "$FILENAME".pdf && open "$FILENAME".pdf
-fi
