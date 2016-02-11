@@ -1,0 +1,54 @@
+#!/usr/bin/env node
+
+var http = require('http'),
+    fs   = require('fs'),
+    path = require('path');
+
+var PORT = process.argv[2] || 8080;
+http
+  .createServer(function (req, res) {
+    var requested_path = (req.url === '/') ? '/index.html' : req.url;
+        requested_path = process.cwd() + requested_path;
+
+    var content_type = get_type(requested_path);
+
+    fs.readFile(requested_path, function (err, content) {
+      if (err) {
+        if (err.code == 'ENOENT') {
+          // File not found
+          res.writeHead(404);
+          res.end('Error 404. File not found.');
+        } else {
+          res.writeHead(500);
+          res.end('Error ' + err.code);
+        }
+      } else {
+        // Set header, serve content
+        if (content_type) res.writeHead(200, { 'Content-Type': content_type });
+        else              res.writeHead(200);
+        res.end(content.toString());
+      }
+    });
+  })
+  .listen(PORT);
+
+console.log('Serving', '/' + path.basename(process.cwd()), 'on port', PORT);
+
+var get_type = function (str) {
+  var ext = path.extname(str);
+  switch (ext) {
+    case '.html':
+      return 'text/html';
+    case '.js':
+      return 'text/js';
+    case '.css':
+      return 'text/css';
+    case '.png':
+      return 'image/png';
+    case '.jpg':
+    case '.jpeg':
+      return 'image/jpg';
+    case '.gif':
+      return 'image/gif';
+  }
+}

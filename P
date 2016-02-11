@@ -4,4 +4,3 @@ INPUTFILE="$1"
 FILENAME="${FULL_FILENAME%.*}"
 shift
 pandoc "$@" "$INPUTFILE" -o "$FILENAME".pdf && open "$FILENAME".pdf
-
