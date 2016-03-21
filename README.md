@@ -8,5 +8,4 @@ to my `$PATH`).
 * `git-start`: So that I don't have to always type `git@github.com:`, and
                sometimes even my username, when cloning repos.
 * `git-open`:  Opens the URL of a Git repo.
-* `server`:    Serve the current directory using Node.js on the given port.
 
