@@ -1,7 +1,0 @@
-#!/bin/bash
-if [ "$1" = "disable" ]
-then
-  launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist
-else
-  launchctl load -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist
-fi
