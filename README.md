@@ -1,5 +1,8 @@
 # Bash scripts
 
+**UNMAINTAINED:** The scripts in this repo are now located in my
+[dotfiles repo](http://github.com/ajay-gandhi/dotfiles).
+
 Small set of bash scripts I use on my local machine (this directory is added
 to my `$PATH`).
 
